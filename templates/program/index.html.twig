@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des séries{% endblock %}
+
+{% block body %}
+    <h1>Liste des séries</h1>
+
+    <table class="table">
+        <thead>
+            <tr class="bg-dark text-white">
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Poster</th>
+                <th>Sommaire</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for program in programs %}
+            <tr>
+                <td>{{ program.id }}</td>
+                <td><a href="{{ path('program_show', {'id': program.id}) }}">{{ program.title }}</a></td>
+                <td><img class="md-img-small" src="{{ program.poster }}"></td>
+                <td><div class="md-truncate">{{ program.summary }}</div></td>
+                <td>
+                    <a href="{{ path('program_edit', {'id': program.id}) }}">
+                        <i class="fas fa-edit" style="font-size: 18px"></i>
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('program_new') }}">Créer une série</a>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Catégorie "{{ category.name }}"{% endblock %}
+
+{% block body %}
+
+    <h1>Catégorie "{{ category.name }}"</h1><hr>
+
+    <div class="card-deck">
+
+        {% for program in category.programs | reverse | slice(0,3) %}
+
+            <div class="card">
+                <img src="{{ program.poster }}" class="card-img-top" alt="{{ program.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ program.title }}</h5>
+                    <p class="card-text">{{ program.summary }}</p>
+                </div>
+            </div>
+
+        {% else %}
+
+            Aucune série trouvée.
+
+        {% endfor %}
+
+    </div>
+
+    <br>
+    <a href="{{ path('categories_index') }}">Retour aux catégories</a>
+    <br>
+
+{% endblock %}

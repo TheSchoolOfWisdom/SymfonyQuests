@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+    Toutes les séries de la table program
+
+{% endblock %}
+
+{% block body %}
+
+{#    {{ form_start(form) }}#}
+{#    {{ form_row(form.searchField) }}#}
+{#        <button type="submit" name="btnSearch">Rechercher</button>#}
+{#    {{ form_end(form) }}#}
+
+    <h1>Toutes les séries</h1><hr>
+
+    {% for program in programs %}
+        <div>
+            <h2><a href="{{ program.title | replace({' ':'-'}) | lower }}">{{ loop.index }}) {{ program.title }}</a></h2>
+            <div class="float-left"><img style="height: 80px; margin-right: 10px" src="{{ program.poster }}"></div>
+            <small>Catégorie : {{ program.category.name }}</small>
+            <p>{{ program.summary }}</p>
+        </div>
+    {% else %}
+        Aucune série trouvée.
+    {% endfor %}
+
+{% endblock %}

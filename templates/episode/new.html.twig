@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un épisode{% endblock %}
+
+{% block body %}
+    <h1>Créer un épisode</h1>
+
+    <div class="md-form-block">
+        {{ include('episode/_form.html.twig') }}
+    </div>
+    <br>
+    <a href="{{ path('episode_index') }}">Retour à la liste</a>
+{% endblock %}

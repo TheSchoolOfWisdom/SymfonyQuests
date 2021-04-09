@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des acteurs{% endblock %}
+
+{% block body %}
+    <h1>Liste des acteurs</h1>
+
+    <table class="table">
+        <thead>
+            <tr class="bg-dark text-white">
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for actor in actors %}
+            <tr>
+                <td>{{ actor.id }}</td>
+                <td><a href="{{ path('actor_show', {'id': actor.id}) }}">{{ actor.name }}</a></td>
+                <td>
+                    <a href="{{ path('actor_edit', {'id': actor.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('actor_new') }}">Ajouter un acteur</a>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+    {{ program.title }}
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="media">
+        <img class="md-img align-self-start" src="{{program.poster}}" alt="{{ program.title }} poster">
+        <div class="media-body">
+            <h1 class="mt-0">{{ program.title }}</h1>
+            <p>{{ program.summary }}</p>
+            <strong>Acteurs :</strong>
+            <ul>
+                {% for actor in program.actors %}
+                    <li>{{ actor.name }} </li>
+                {% else %}
+                    <li>Aucun acteur pour cette série</li>
+                {% endfor %}
+            </ul>
+            <p>Categorie : {{ program.category.name }}</p>
+            {% for season in program.seasons %}
+                <p><a href="{{ program.title | replace({' ':'-'}) | lower }}/{{ season.id }}"><strong>Season {{ season.number }}</strong></a>
+                <br><small>Date de sortie: {{ season.year }}</small>
+                <br>{{ season.description }}</p>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

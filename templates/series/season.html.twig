@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+    {{ program.title }}
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="media">
+
+        <img class="md-img md-img-small align-self-start mr-3" src="{{program.poster}}"
+             alt="{{ program.title }} poster">
+
+        <div class="media-body">
+
+            <h1 class="mt-0"><a href="{{ path('series_index') }}{{ program.title | replace({' ':'-'}) | lower }}">{{ program.title }}</a></h1>
+            <small>Categorie: {{ program.category.name }}</small>
+            <p>{{ program.summary }}</p>
+
+            <h2>Season {{ season.number }}</h2>
+            <small>Date de sortie: {{ season.year }}</small>
+            <p>{{ season.description }}</p>
+
+            {% for episode in season.episodes %}
+                <a href="{{ path('series_season', {'program': program.title, 'season': episode.season.id }) | replace({'%20':'-'}) | lower }}/{{ episode.id }}">{{ loop.index }}) {{ episode.title }}</a><br>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    <br>
+
+{% endblock %}

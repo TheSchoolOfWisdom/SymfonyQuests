@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Série "{{ program.title }}"{% endblock %}
+
+{% block body %}
+    <h1>Série "{{ program.title }}"</h1><br>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ program.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ program.title }}</td>
+            </tr>
+            <tr>
+                <th>Sommaire</th>
+                <td>{{ program.summary }}</td>
+            </tr>
+            <tr>
+                <th>Poster</th>
+                <td><img class="md-img-small" src="{{ program.poster }}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('program_edit', {'id': program.id}) }}">Mettre à jour</a>
+
+    <br><br>
+
+    {{ include('program/_delete_form.html.twig') }}
+
+    <br>
+
+    <a href="{{ path('program_index') }}">Retour à la liste</a>
+
+{% endblock %}

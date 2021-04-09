@@ -1,0 +1,73 @@
+// customize some Bootstrap variables
+$theme-colors: (
+        "primary": #2f9fdc,
+        "secondary": #484848,
+        "success": #40c163,
+        "info": #17a2b8,
+        "warning": #ffc107,
+        "danger": #fd327c,
+        "light": #f8f9fa,
+        "dark": #313131
+);
+$enable-rounded: false;
+// the ~ allows you to reference things in node_modules
+@import "~bootstrap/scss/bootstrap";
+
+.md-inf {
+  width: 100%;
+  display: block;
+  color: #8e8e8e;
+  font-weight: 600;
+}
+
+.navbar {
+  margin-bottom: 30px;
+}
+
+.md-img {
+  height: 520px;
+  margin-top: 10px;
+  margin-right: 30px;
+}
+
+.md-img-small {
+  height: 140px
+}
+
+.md-bar {
+  color: #e8e8e8;
+}
+
+.md-form-block label {
+  padding-right: 10px;
+  width: 120px;
+}
+
+.del-button {
+  position: absolute;
+  margin-left: 20px;
+  display: none;
+}
+li:hover .del-button {
+  display: unset;
+}
+
+.table td, .table th {
+  text-align: center;
+}
+
+.md-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3; /* number of lines to show */
+}
+
+.md-form-block input, .md-form-block textarea {
+  border-radius: 5px;
+  border: 1px solid
+  rgba(0,0,0,0.1);
+  padding: 5px 8px;
+}
+

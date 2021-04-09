@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+    Toutes les catégories
+
+{% endblock %}
+
+{% block body %}
+
+    <h1>Toutes les catégories</h1><hr>
+
+    {% for category in categories %}
+        <li style="list-style-type: none">
+            <a href="{{ path('series_category') }}/{{ category.name | replace({' ':'-'}) | lower }}">{{ category.name }}</a>
+            <a class="del-button" href="{{ path('categories_delete', {'id':category.id}) }}">
+                <i class="fas fa-trash-alt" style="font-size: 12px; color: #ff425f"></i>
+            </a>
+        </li>
+        <hr>
+    {% endfor %}
+
+    <br>
+    <a href="{{ path('categories_add') }}" class="btn btn-success" role="button" aria-pressed="true">
+        Ajouter une catégorie
+    </a>
+
+{% endblock %}

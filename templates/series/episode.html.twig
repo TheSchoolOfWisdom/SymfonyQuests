@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+
+    <div class="media">
+
+        <div class="media-body">
+
+        </div>
+
+    </div>
+
+    <section>
+        <br>
+
+        <h1 class="text-center">{{ episode.number }} - {{ episode.title }}</h1>
+
+        <hr>
+
+            <small class="text-center md-inf">Categorie : {{ episode.season.program.category.name }}
+
+                <span class="md-bar"> | </span> Date de sortie: {{ episode.season.year }}
+
+            </small>
+
+        <hr>
+
+        <img class="float-left" style="height: 200px; margin-right: 15px" src="{{ episode.season.program.poster }}">
+
+        <p>{{ episode.season.program.summary }}</p>
+
+        <p>{{ episode.synopsis }}</p>
+
+    </section>
+
+{% endblock %}
